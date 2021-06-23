@@ -1,3 +1,41 @@
+#' Longest distance
+#' @description Return the longest distance for a given ship
+#' @param data dataframe containing at least the following columns : SHIPNAME, LAT, LON, DATETIME
+#' @param shipname a string
+#' @import dplyr
+#' @examples 
+#' longest_distance(ships, "KAROLI")
+longest_distance <- function(data, shipname) {
+  df <- data %>%
+    filter(SHIPNAME == shipname) %>%
+    arrange(DATETIME) %>%
+    select(c("LAT", "LON", "DATETIME"))
+  
+  df_endpoint <- df %>%
+    lag() %>%
+    slice(-1) %>%
+    rename(lat1 = LAT,
+           long1 = LON,
+           datetime1 = DATETIME)
+  
+  df_startpoint <- df %>%
+    slice(-1) %>%
+    rename(lat2 = LAT,
+           long2 = LON,
+           datetime2 = DATETIME)
+  
+  df_distances <- cbind(df_startpoint, df_endpoint)
+  
+  df_distances$distance <-
+    do.call(haversine_dist,
+            df_distances %>% select(long1, lat1, long2, lat2))
+  
+  return(df_distances %>%
+           slice_max(distance, n = 1) %>%
+           slice_max(datetime1, n = 1))
+}
+
+
 #' Distance between coordinate (Haversine method)
 #' @description Calculate distance in meters between two coordinates (latitude, longitude).
 #' @param long1 float, longitude of the first coordinate

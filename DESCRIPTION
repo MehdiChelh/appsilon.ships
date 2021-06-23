@@ -1,7 +1,7 @@
 Package: appsilon.ships
 Title: PKG_TITLE
 Version: 0.0.0.9000
-Authors@R: person('AUTHOR_FIRST', 'AUTHOR_LAST', email = 'AUTHOR@MAIL.COM', role = c('cre', 'aut'))
+Authors@R: person('Mehdi', 'Echchelh', email = 'mehdi.echel@gmail.com', role = c('cre', 'aut'))
 Description: PKG_DESC.
 License: MIT + file LICENSE
 Imports: 
