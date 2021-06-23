@@ -3,14 +3,28 @@
 #' @param request Internal parameter for `{shiny}`. 
 #'     DO NOT REMOVE.
 #' @import shiny
+#' @import shiny.semantic
+#' @importFrom leaflet leafletOutput
 #' @noRd
 app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic 
-    fluidPage(
-      h1("appsilon.ships")
+    semanticPage(
+      # --- Header
+      h1(class = "ui header", icon("ship"),
+         div(class = "content", "Ships dataset (AIS data)",
+             div(class = "sub header", "Appsilon Homework Assignement"))),
+      
+      # --- Menu
+      horizontal_menu(list(
+        list(name = "Home", link = "#", icon = "home"),
+        list(name = "Ships statistics", link = "#", icon = "ship")
+      )),
+      
+      # --- Plot
+      leafletOutput("ship-map")
     )
   )
 }
