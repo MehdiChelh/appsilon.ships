@@ -7,6 +7,9 @@ ships <- ships %>% mutate_each(list(factor),
                                  SHIPNAME, PORT,
                                  ship_type, port))
 
+ships$DATETIME <-
+  as.POSIXct(ships$DATETIME, format = "%Y-%m-%dT%H:%M:%OS")
+
 # ships <- ships[1:2000, ]
 
 usethis::use_data(ships, overwrite = TRUE)
