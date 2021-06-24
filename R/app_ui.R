@@ -27,6 +27,14 @@ app_ui <- function(request) {
       leafletOutput("ship-map"),
       # --- Vessel selection (dropdown_input)
       mod_select_vessel_ui("vessel_selection"),
+      # --- Message
+      div(
+        class = "ui raised segment",
+        div(
+          tags$span(class="ui blue ribbon label", "Vessel longest distance:"),
+          textOutput("vessel_distance")
+        )
+      )
     )
   )
 }
