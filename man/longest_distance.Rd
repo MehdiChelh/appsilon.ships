@@ -14,6 +14,3 @@ longest_distance(data, shipname)
 \description{
 Return the longest distance for a given ship
 }
-\examples{
-longest_distance(ships, "KAROLI")
-}

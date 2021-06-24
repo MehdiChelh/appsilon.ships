@@ -78,7 +78,7 @@ golem_add_external_resources <- function(){
   )
  
   tags$head(
-    favicon(),
+    favicon(ico="favicon-appsilon"),
     bundle_resources(
       path = app_sys('app/www'),
       app_title = 'appsilon.ships'

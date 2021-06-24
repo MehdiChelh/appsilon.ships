@@ -3,8 +3,6 @@
 #' @param data dataframe containing at least the following columns : SHIPNAME, LAT, LON, DATETIME
 #' @param shipname a string
 #' @import dplyr
-#' @examples 
-#' longest_distance(ships, "KAROLI")
 longest_distance <- function(data, shipname) {
   df <- data %>%
     filter(SHIPNAME == shipname) %>%
