@@ -5,6 +5,7 @@
 #' @import shiny
 #' @import shiny.semantic
 #' @importFrom leaflet leafletOutput
+#' @importFrom DT dataTableOutput
 #' @noRd
 app_ui <- function(request) {
   tagList(
@@ -33,6 +34,7 @@ app_ui <- function(request) {
               class="ten wide column",
               leafletOutput("ship-map")
             ),
+            
             tags$div(
               class="six wide column",
               # --- Vessel selection (dropdown_input)
@@ -45,6 +47,13 @@ app_ui <- function(request) {
                   textOutput("vessel_distance")
                 )
               )
+            ),
+            
+            # --- Datatable - vessel_data
+            tags$div(
+              class="sixteen wide column",
+              style="padding-top: 15px",
+              dataTableOutput("vessel_data")
             )
           )
         )

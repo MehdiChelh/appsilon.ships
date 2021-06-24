@@ -5,6 +5,7 @@
 #' @import shiny
 #' @import leaflet
 #' @import tidyr
+#' @importFrom DT renderDataTable datatable
 #' @noRd
 app_server <- function( input, output, session ) {
   # ---------------------------------------------
@@ -78,5 +79,23 @@ app_server <- function( input, output, session ) {
         big.mark = ","
       ), "meters."
     )
+  })
+  
+  # ------ DataTableOutput : vessel_data
+  output[["vessel_data"]] <- renderDataTable({
+    req(ship_data)
+    
+    data <- ship_data() %>%
+      select(c(SHIPNAME, LAT, LON, SHIPTYPE, WIDTH, DWT, DATETIME)) %>%
+      rename(
+        Name = SHIPNAME,
+        Latitude = LAT,
+        Longitude = LON,
+        Type = SHIPTYPE,
+        Width = WIDTH,
+        Deadweight = DWT,
+        Date = DATETIME
+      )
+    datatable(data, options = list(dom = 'tp'))
   })
 }
