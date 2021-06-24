@@ -13,6 +13,7 @@ Imports:
     golem (>= 0.3.1),
     htmltools,
     leaflet,
+    pkgload,
     processx,
     shiny (>= 1.6.0),
     shiny.semantic,

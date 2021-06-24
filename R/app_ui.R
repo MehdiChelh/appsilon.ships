@@ -18,6 +18,7 @@ app_ui <- function(request) {
           class="ui grid row",
           # --- Header
           h1(class = "ui header row", icon("ship"),
+             style = "padding-top: 30px",
              div(class = "content", "Ships dataset (AIS data)",
                  div(class = "sub header", "Appsilon Homework Assignement"))),
           
