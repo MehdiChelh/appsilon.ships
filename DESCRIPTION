@@ -15,7 +15,8 @@ Imports:
     leaflet,
     processx,
     shiny (>= 1.6.0),
-    shiny.semantic
+    shiny.semantic,
+    tidyr
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
