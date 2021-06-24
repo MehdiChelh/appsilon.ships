@@ -54,15 +54,35 @@ app_server <- function( input, output, session ) {
     longest_dist_df <- longest_dist()
     
     leaflet(longest_dist_df) %>%
-      addProviderTiles(providers$Stamen.TonerLite,
-                       options = providerTileOptions(noWrap = TRUE)
+      addProviderTiles(providers$OpenStreetMap.France) %>%
+      # -- First marker
+      addAwesomeMarkers(
+        lng = longest_dist_df$LON[1],
+        lat = longest_dist_df$LAT[1],
+        label = paste('First Observation, ', longest_dist_df$DATETIME[1]),
+        icon = makeAwesomeIcon(
+          icon = 'home',
+          markerColor = 'darkblue',
+          library = 'ion',
+          iconColor = "white"
+        ),
+        popup = paste("<b style=\"color: darkblue\">First observation</b><br>",
+                      "Date:", longest_dist_df$DATETIME[1])
+      ) %>% 
+      # -- Second marker
+      addAwesomeMarkers(
+        lng = longest_dist_df$LON[2],
+        lat = longest_dist_df$LAT[2],
+        label = paste('Second Observation, ', longest_dist_df$DATETIME[2]),
+        icon = makeAwesomeIcon(
+          icon = 'flag',
+          markerColor = 'red',
+          library = 'ion',
+          iconColor = "white"
+        ),
+        popup = paste("<b style=\"color: darkblue\">Second observation</b><br>",
+                      "Date:", longest_dist_df$DATETIME[2])
       ) %>%
-      addAwesomeMarkers(lng = longest_dist_df$LON[2],
-                        lat = longest_dist_df$LAT[2],
-                        label=paste('Second Observation, ', longest_dist_df$DATETIME[2])) %>%
-      addAwesomeMarkers(lng = longest_dist_df$LON[1],
-                        lat = longest_dist_df$LAT[1],
-                        label=paste('First Observation, ', longest_dist_df$DATETIME[1])) %>%
       addMeasure(primaryLengthUnit = "meters")
   })
   
