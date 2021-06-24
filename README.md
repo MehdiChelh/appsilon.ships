@@ -23,7 +23,7 @@ devtools::install_github("MehdiChelh/appsilon.ships")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example of how to launch the app locally:
 
 ``` r
 library(appsilon.ships)
