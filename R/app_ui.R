@@ -24,7 +24,9 @@ app_ui <- function(request) {
       )),
       
       # --- Plot
-      leafletOutput("ship-map")
+      leafletOutput("ship-map"),
+      # --- Vessel selection (dropdown_input)
+      mod_select_vessel_ui("vessel_selection"),
     )
   )
 }

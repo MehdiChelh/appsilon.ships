@@ -5,6 +5,8 @@
 #' @import shiny
 #' @noRd
 app_server <- function( input, output, session ) {
-  # Your application server logic 
-  
+  # ---------------------------------------------
+  # --- Modules
+  # ---------------------------------------------
+  selection <- mod_select_vessel_server("vessel_selection", ships)
 }
